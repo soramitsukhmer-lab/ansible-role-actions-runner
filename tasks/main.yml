@@ -1,0 +1,39 @@
+- fail: msg="Bailing out: this play requires 'github_pat'"
+  when: github_pat != ""
+
+- fail: msg="Bailing out: this play requires 'github_organization'"
+  when: github_organization != ""
+
+# Create group/user for actions runner
+- name: Ensure github group created
+  group:
+    name: "{{ github_actions_runner_group }}"
+    state: present
+
+- name: Ensure github user created
+  user:
+    name: "{{ github_actions_runner_user }}"
+    state: present
+    shell: /bin/bash
+    password: "{{ github_actions_runner_user | password_hash('sha512','A512') }}"
+    group: "{{ github_actions_runner_group }}"
+
+# Download scripts
+- name: Download "Automate Configuring Self-Hosted Runners" scripts
+  ansible.builtin.get_url:
+    url: "{{ github_actions_runner_url }}/{{ item.in }}"
+    dest: "{{ github_actions_runner_user_home }}/{{ item.out }}"
+    mode: '0755'
+  loop: "{{ github_actions_runner_scripts }}"
+
+# Create self-hosted runner
+- include_tasks: runner-create.yml
+  when: github_actions_runner_mode == 'create'
+
+# Remove self-hosted runner
+- include_tasks: runner-remove.yml
+  when: github_actions_runner_mode == 'remove'
+
+# Delete self-hosted runner
+- include_tasks: runner-delete.yml
+  when: github_actions_runner_mode == 'delete'

@@ -1,0 +1,9 @@
+- name: Removing Self-Hosted Runners
+  become: true
+  environment:
+    RUNNER_CFG_PAT: "{{ github_pat }}"
+  ansible.builtin.shell: |
+      ./runner-remove.sh {{ github_organization }} 
+  args:
+    executable: /bin/bash
+    chdir: "{{ github_actions_runner_user_home }}"
