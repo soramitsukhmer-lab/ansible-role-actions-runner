@@ -11,7 +11,7 @@ github_actions_runner_user: "github"
 github_actions_runner_user_home: "/home/{{ github_actions_runner_user }}"
 
 # The GitHub Actions Runner Scripts
-github_actions_runner_url: https://raw.githubusercontent.com/soramitsukhmer-lab/ansible-role-actions-runner/main/scripts/
+github_actions_runner_url: https://raw.githubusercontent.com/soramitsukhmer-lab/ansible-role-actions-runner/main/scripts
 # github_actions_runner_url: https://raw.githubusercontent.com/actions/runner/main/scripts
 github_actions_runner_scripts:
   - { in: "create-latest-svc.sh", out: "runner-create-svc.sh" }
