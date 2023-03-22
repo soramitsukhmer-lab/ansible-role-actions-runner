@@ -2,11 +2,11 @@
   environment:
     RUNNER_CFG_PAT: "{{ github_pat }}"
   ansible.builtin.shell: |
-      ./runner-delete.sh {{ github_organization }} 
+    ./runner-delete.sh {{ github_organization }} 
   args:
     executable: /bin/bash
     chdir: "{{ github_actions_runner_user_home }}"
-  ignore_errors: true
+    removes: "{{ github_actions_runner_user_home }}/runner"
 
 - name: Ensure runner directory has been removed
   ansible.builtin.file:

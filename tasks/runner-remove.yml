@@ -2,7 +2,7 @@
   environment:
     RUNNER_CFG_PAT: "{{ github_pat }}"
   ansible.builtin.shell: |
-      ./runner-remove-svc.sh {{ github_organization }} 
+    ./runner-remove-svc.sh {{ github_organization }} 
   args:
     executable: /bin/bash
     chdir: "{{ github_actions_runner_user_home }}"
