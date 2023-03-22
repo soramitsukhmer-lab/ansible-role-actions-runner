@@ -157,19 +157,15 @@ ls -la *.tar.gz
 #---------------------------------------------------
 # extract to runner directory in this directory
 #---------------------------------------------------
+echo
+echo "Extracting ${runner_file} to ./runner"
 
-# Do not override ./runner if already exists
-if [ ! -d "./runner" ]; then
-    echo
-    echo "Extracting ${runner_file} to ./runner"
+tar xzf "./${runner_file}" -C runner
 
-    tar xzf "./${runner_file}" -C runner
+# export of pass
+sudo chown -R $svc_user ./runner
 
-    # export of pass
-    sudo chown -R $svc_user ./runner
-
-    pushd ./runner
-fi
+pushd ./runner
 
 #---------------------------------------
 # Unattend config
