@@ -1,6 +1,4 @@
 - name: Removing Self-Hosted Runners
-  remote_user: "{{ github_actions_runner_user }}"
-  sudo: yes
   environment:
     RUNNER_CFG_PAT: "{{ github_pat }}"
   ansible.builtin.shell: |
