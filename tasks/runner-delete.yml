@@ -6,6 +6,7 @@
   args:
     executable: /bin/bash
     chdir: "{{ github_actions_runner_user_home }}"
+  ignore_errors: true
 
 - name: Ensure runner directory has been removed
   ansible.builtin.file:

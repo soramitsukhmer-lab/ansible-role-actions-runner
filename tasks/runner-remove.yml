@@ -6,3 +6,4 @@
   args:
     executable: /bin/bash
     chdir: "{{ github_actions_runner_user_home }}"
+  ignore_errors: true
