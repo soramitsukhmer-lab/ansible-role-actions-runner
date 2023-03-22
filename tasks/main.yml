@@ -18,6 +18,15 @@
     password: "{{ github_actions_runner_user | password_hash('sha512','A512') }}"
     group: "{{ github_actions_runner_group }}"
 
+# Installing prerequisite packages
+- name: Installing prerequisite packages
+  apt:
+    name:
+      - "curl"
+      - "jq"
+    state: present
+    update_cache: yes
+
 # Download scripts
 - name: Download "Automate Configuring Self-Hosted Runners" scripts
   ansible.builtin.get_url:
