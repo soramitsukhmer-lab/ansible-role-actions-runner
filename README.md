@@ -29,7 +29,6 @@ Example:
   vars:
     github_pat: "your-github-token-here"
     github_organization: "your-github-organization"
-
   roles:
     - soramitsukhmer-lab.actions-runner
 ```
