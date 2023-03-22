@@ -1,5 +1,6 @@
 - name: Removing Self-Hosted Runners
   environment:
+    RUNNER_ALLOW_RUNASROOT: "true"
     RUNNER_CFG_PAT: "{{ github_pat }}"
   ansible.builtin.shell: |
     ./runner-remove-svc.sh {{ github_organization }} 
