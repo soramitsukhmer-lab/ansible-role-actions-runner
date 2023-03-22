@@ -1,8 +1,8 @@
 - fail: msg="Bailing out: this play requires 'github_pat'"
-  when: github_pat != ""
+  when: github_pat == ""
 
 - fail: msg="Bailing out: this play requires 'github_organization'"
-  when: github_organization != ""
+  when: github_organization == ""
 
 # Create group/user for actions runner
 - name: Ensure github group created
