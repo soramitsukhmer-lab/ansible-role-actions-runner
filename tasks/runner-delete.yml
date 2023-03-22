@@ -1,5 +1,4 @@
 - name: Deleting Self-Hosted Runners
-  become: true
   environment:
     RUNNER_CFG_PAT: "{{ github_pat }}"
   ansible.builtin.shell: |
