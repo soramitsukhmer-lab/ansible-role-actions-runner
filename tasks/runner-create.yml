@@ -1,11 +1,11 @@
 - name: Automate Configuring Self-Hosted Runners
-  args:
-    executable: /bin/bash
-    chdir: "{{ github_actions_runner_user_home }}"
-    creates: "{{ github_actions_runner_user_home }}/runner"
   environment:
     RUNNER_CFG_PAT: "{{ github_pat }}"
   ansible.builtin.shell: |
       ./runner-create-svc.sh \
         -s {{ github_organization }} \
         -u {{ github_actions_runner_user }}
+  args:
+    executable: /bin/bash
+    chdir: "{{ github_actions_runner_user_home }}"
+    creates: "{{ github_actions_runner_user_home }}/runner"
