@@ -25,6 +25,6 @@
 - include_tasks: runner-create.yml
   when: github_actions_runner_mode == 'create'
 
-# Delete self-hosted runner
-- include_tasks: runner-delete.yml
-  when: github_actions_runner_mode == 'delete'
+# Remove self-hosted runner
+- include_tasks: runner-remove.yml
+  when: github_actions_runner_mode == 'remove'

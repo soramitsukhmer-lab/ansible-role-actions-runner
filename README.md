@@ -7,6 +7,8 @@ Available variables are listed below, along with default values (see `defaults/m
 ```yml
 github_pat: "token"
 github_organization: "organization"
+
+github_actions_runner_mode: create # or remove (default: create)
 ```
 
 ## Add to `requirements.yml`
