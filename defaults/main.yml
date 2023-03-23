@@ -1,5 +1,5 @@
 # Ansible Role Options
-github_actions_runner_mode: create # remove, delete
+github_actions_runner_mode: create # or delete
 
 # The GitHub Credentials
 github_pat: ""
