@@ -1,17 +1,3 @@
-# Create group/user for actions runner
-- name: Ensure github group created
-  group:
-    name: "{{ github_actions_runner_group }}"
-    state: present
-
-- name: Ensure github user created
-  user:
-    name: "{{ github_actions_runner_user }}"
-    state: present
-    shell: /bin/bash
-    password: "{{ github_actions_runner_user | password_hash('sha512','A512') }}"
-    group: "{{ github_actions_runner_group }}"
-
 - name: Automate Configuring Self-Hosted Runners
   environment:
     RUNNER_CFG_PAT: "{{ github_pat }}"

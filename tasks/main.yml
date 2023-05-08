@@ -13,6 +13,9 @@
     state: present
     update_cache: yes
 
+# Create github user
+- include_tasks: github-user.yml
+
 # Download scripts
 - name: Download "Automate Configuring Self-Hosted Runners" scripts
   ansible.builtin.get_url:
