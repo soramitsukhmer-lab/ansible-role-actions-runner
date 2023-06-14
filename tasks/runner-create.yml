@@ -4,7 +4,8 @@
   ansible.builtin.shell: |
     ./runner-create-svc.sh \
       -s {{ github_organization }} \
-      -u {{ github_actions_runner_bootstrap_user }}
+      -u {{ github_actions_runner_bootstrap_user }} \
+      -r {{ github_actions_runner_group }}
   args:
     executable: /bin/bash
     chdir: "{{ github_actions_runner_bootstrap_user_home }}"

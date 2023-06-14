@@ -5,6 +5,10 @@ github_actions_runner_mode: create # or remove (default: create)
 github_pat: ""
 github_organization: ""
 
+# The GitHub Runner Configurations 
+github_actions_runner_group: "Default"
+# github_actions_runner_labels: "self-hosted,linux,{{ ansible_architecture }}"
+
 # The user/group that the runner will be run on
 github_actions_runner_bootstrap_group: "github"
 github_actions_runner_bootstrap_user: "github"
