@@ -1,12 +1,12 @@
-- name: Ensure {{ github_actions_runner_group }} group created
+- name: Ensure {{ github_actions_runner_bootstrap_group }} group created
   group:
-    name: "{{ github_actions_runner_group }}"
+    name: "{{ github_actions_runner_bootstrap_group }}"
     state: present
 
-- name: Ensure {{ github_actions_runner_user }} user created
+- name: Ensure {{ github_actions_runner_bootstrap_user }} user created
   user:
-    name: "{{ github_actions_runner_user }}"
+    name: "{{ github_actions_runner_bootstrap_user }}"
     state: present
     shell: /bin/bash
-    password: "{{ github_actions_runner_user | password_hash('sha512','A512') }}"
-    group: "{{ github_actions_runner_group }}"
+    password: "{{ github_actions_runner_bootstrap_user | password_hash('sha512','A512') }}"
+    group: "{{ github_actions_runner_bootstrap_group }}"

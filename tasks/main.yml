@@ -20,7 +20,7 @@
 - name: Download "Automate Configuring Self-Hosted Runners" scripts
   ansible.builtin.get_url:
     url: "{{ github_actions_runner_url }}/{{ item.in }}"
-    dest: "{{ github_actions_runner_user_home }}/{{ item.out }}"
+    dest: "{{ github_actions_runner_bootstrap_user_home }}/{{ item.out }}"
     mode: '0755'
   loop: "{{ github_actions_runner_scripts }}"
 

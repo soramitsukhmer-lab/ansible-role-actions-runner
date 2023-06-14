@@ -6,7 +6,7 @@
     ./runner-remove-svc.sh {{ github_organization }} 
   args:
     executable: /bin/bash
-    chdir: "{{ github_actions_runner_user_home }}"
+    chdir: "{{ github_actions_runner_bootstrap_user_home }}"
   ignore_errors: true
 
 - name: Deleting Self-Hosted Runners
@@ -16,16 +16,16 @@
     ./runner-delete.sh {{ github_organization }} 
   args:
     executable: /bin/bash
-    chdir: "{{ github_actions_runner_user_home }}"
+    chdir: "{{ github_actions_runner_bootstrap_user_home }}"
   ignore_errors: true
 
 - name: Ensure runner directory has been removed
   ansible.builtin.file:
-    path: "{{ github_actions_runner_user_home }}/runner"
+    path: "{{ github_actions_runner_bootstrap_user_home }}/runner"
     state: absent
 
 - name: Ensure runner scripts are removed
   ansible.builtin.file:
-    path: "{{ github_actions_runner_user_home }}/{{ item.out }}"
+    path: "{{ github_actions_runner_bootstrap_user_home }}/{{ item.out }}"
     state: absent
   loop: "{{ github_actions_runner_scripts }}"
